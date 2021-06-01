@@ -2,152 +2,20 @@
 const questionContainer = document.querySelector('.question');
 
 // question objects. reference to HTML
+const body = document.querySelector('body');
+// const modal = document.querySelector('.modal');
+// const carousel = document.querySelector('.carousel');
+// const carouselImg = document.querySelector('carouselImg');
 const startButton = document.getElementById('start-btn');
-const nextButton = document.getElementById('next-btn');
+// const nextButton = document.querySelector('.carousel .next-btn');
+// const select = document.querySelector('.carousel .select');
 const restartButton = document.getElementById('restart');
 const questionContainerElement = document.getElementById('question-container');
 const questionElement = document.getElementById('question');
 const answerButtonsElement = document.getElementById('answer-buttons');
+const userScore = document.getElementById('user-score');
 // const showGameResults =document.getElementById('results');
 // const submitButton = document.getElementById('submit');
-
-
-//event listeners
-startButton.addEventListener('click', start);
-nextButton.addEventListener('click', next);
-submitButton.addEventListener('click', submit);
-// submitButton.addEventListener('click', showGameResults);
-
-
-
-// functions start,select
-function startGame(){
-  console.log('started')
-  startButton.classList.add('hide')
-  questionContainerElement.classList.remove('hide')
-  // generateNextQuestion()
-showQuestion(questionArray);
-}
-
-// next button
-function next(){
-  concole.log(generateNextQuestion())
-  nextButton.classList.add('hide')
-  questionContainerElement.classList.remote()
-}
-
-// const BrooklynNets = document.querySelector('#BrooklynNetsImage')
-// const NewYorkKnicks = document.querySelector('#NewYorkKnicksImage')
-// BrooklynNets.addEventListener('click', function(){
-//   BrooklynNets.classList.add('hidden')
-//   console.log('clicked BrooklynNetsImage, start game' )
-//   startGame();
-// })
-//
-// BrooklynNets.addEventListener('click', function(){
-//   BrooklynNets.classList.add('hidden')
-//   console.log('clicked NewYorkKnicksImage, start game')
-//   startGame();
-//   /// here logic to start game
-// })
-
-// function of random questions
-function generateNextQuestion(){
-  // resetState()
-const previousQuestions = [];
-let randomQuestionNumber = math.floor(Math.random() * question.Array.length);
-while (previousQuestions.includes(randomQuestionNumber)){
- let randomQuestionNumber = math.floor(Math.random() * question.Array.length);
-}
-let currentQuestionNumber =randomQuestionNumber;
-previousQuestions.push(currentQuestionNumber)
-}
-
-// function to show Questions
-function showQuestion(questions){
-  let first = Math.floor(Math.random() * questions.length);// random #
-  questionElement.innerText =questions[first].question;
-  for(const [key, value] of Object.entries(questions[first].choices)){
-    const button = document.createElement('button');
-        document.body.appendChild(button)
-        button.innerText = value;
-        button.setAttribute("data-correctChoice", questions[first].correctChoice)
-        button.addEventListener('click', selectAnswer);
-  }
-
-  //   if (answer.correct){
-  //     button.dataset.correct = answer.correct
-  //   }
-  //   button.addEventListener('click', selectAnswer);
-  //   answerButtonsElement.appendChild(button);
-  // });
-};
-
-// if answer is correct
-// if(playerAnswer === currentQuestion.currentAnswer){
-//   numCorrect+++
-//   }
-// // // color the answer green
-// answer[questionNumber].style.color = 'green';
-//
-// // // if answer is wrong
-// else{
-//   answer[questionNumber].style.color = 'red';
-// }
-// }
-// });
-// function resetState(){
-// clearStatusClass(document.body)
-//   nextButton.classList.add('hide')
-//   while (answerButtonsElement.firstChild){
-//     answerButtonsElement.removeChild(answerButtonsElement)
-//   }
-// }
-// ?? if statenet in if answe is correct --- chtobi piemnyalo tsvet na green ili red
-// ?? varianti otvetov chtobi rabotali
-// ??next button
-// ??start buttons
-// ??
-
-
-function selectAnswer(e){
-  const selectedButton = e.target
-  console.log(selectedButton);
-  const correct = selectedButton.dataset
-  //const correct = questionArray[1].correctChoice;
-  console.log(correct);
-  setStatusClass(document.body, correct)
-  Array.from(answerButtonsElement.children).forEach(button =>{
-    setStatusClass(button, button.dataset.correct)
-  })
-  // if (randomQuestionNumber.length > currentQuestionNumber + 1) {
-  //   nextButton.classList.remove('hide')
-  // } else {
-  //   startButton.innerText = "Restart"
-  //   startButton.classList.remove('hide')
-  // }
-}
-//
-function setStatusClass(element, correct){
-//clearStatusClass(element)
-  if (correct){
-    element.classList.add('correct')
-  } else{
-    element.classList.add('wrong')
-  }
-}
-//
-//
-// const pic1 =
-// document.querySelector(".pictures")
-//
-// const pic2 =
-// document.querySelector('#disappear')
-//
-// pic1.addEventListener('click', function(){
-//   pic1.classList.toggle('hidden')
-// })
-
 
 class Question {
   constructor(question, correct, a, b, c, d ){
@@ -353,6 +221,185 @@ const questionArray = [
 ];
 
 
+
+// const backgroundImage = [
+//   "https://upload.wikimedia.org/wikipedia/commons/thumb/4/44/Brooklyn_Nets_newlogo.svg/774px-Brooklyn_Nets_newlogo.svg.png",
+//
+//   "https://www.kindpng.com/picc/m/409-4095405_transparent-new-york-knicks-png-new-york-knicks.png"
+//
+// ]
+//
+// let currentSlide = 0;
+
+// functions start,select
+// const toggleModal = () => modal.classList.toggle('open');
+//
+// const changeSlide = (direction) => {
+//   if (direction === 'next'){
+//     if (currentSlide < backgroundImage.length - 1) {
+//       currentSlide++
+//     } else {
+//       alert('going back to the first slide')
+//       currentSlide = 0;
+//     }
+//   }
+//   else if (direction === 'previous'){
+//     if (currentSlide > 0){
+//       currentSlide--
+//     } else {
+//       alert('going back to the last slide')
+//       currentSlide = backgroundImage.length - 1;
+//     }
+//   }
+//   carouselImg.setAttribute('src', backgroundImage[currentSlide]);
+// }
+//
+// const openCarousel = () => {
+//   carousel.classList.add('open');
+//   carouselImg.setAttribute("src", backgroundImage[currentSlide]);
+//   toggleModal();
+// }
+//
+// const selectBackground = () => {
+//   carousel.classList.remove('open');
+//   body.style.backgroundImage = `url(${backgroundImage[currentSlide]})`;
+//   startGame();
+// }
+
+function startGame(){
+  console.log('started')
+  startButton.classList.add('hide')
+  questionContainerElement.classList.remove('hide')
+  // generateNextQuestion()
+showQuestion(questionArray);
+}
+
+// function to show Questions
+function showQuestion(questions){
+  let first = Math.floor(Math.random() * questions.length);// random #
+  questionElement.innerText =questions[first].question;
+  for(const [key, value] of Object.entries(questions[first].choices)){
+    const button = document.createElement('button');
+        document.body.appendChild(button)
+        button.innerText = value;
+        button.setAttribute("data-correctChoice", questions[first].correctChoice)
+        button.addEventListener('click', selectAnswer);
+  }
+
+// next button
+// function next(){
+//   concole.log(generateNextQuestion())
+//   nextButton.classList.add('hide')
+//   questionContainerElement.classList.remote()
+// }
+
+// const BrooklynNets = document.querySelector('#BrooklynNetsImage')
+// const NewYorkKnicks = document.querySelector('#NewYorkKnicksImage')
+// BrooklynNets.addEventListener('click', function(){
+//   BrooklynNets.classList.add('hidden')
+//   console.log('clicked BrooklynNetsImage, start game' )
+//   startGame();
+// })
+//
+// BrooklynNets.addEventListener('click', function(){
+//   BrooklynNets.classList.add('hidden')
+//   console.log('clicked NewYorkKnicksImage, start game')
+//   startGame();
+//   /// here logic to start game
+// })
+
+// function of random questions
+function generateNextQuestion(){
+const previousQuestions = [];
+let randomQuestionNumber = math.floor(Math.random() * question.Array.length);
+while (previousQuestions.includes(randomQuestionNumber)){
+ let randomQuestionNumber = math.floor(Math.random() * question.Array.length);
+}
+let currentQuestionNumber =randomQuestionNumber;
+previousQuestions.push(currentQuestionNumber)
+}
+
+
+
+  //   if (answer.correct){
+  //     button.dataset.correct = answer.correct
+  //   }
+  //   button.addEventListener('click', selectAnswer);
+  //   answerButtonsElement.appendChild(button);
+  // });
+};
+
+// if answer is correct
+// if(playerAnswer === currentQuestion.currentAnswer){
+//   numCorrect+++
+//   }
+// // // color the answer green
+// answer[questionNumber].style.color = 'green';
+//
+// // // if answer is wrong
+// else{
+//   answer[questionNumber].style.color = 'red';
+// }
+// }
+// });
+
+// }
+// ?? if statenet in if answe is correct --- chtobi piemnyalo tsvet na green ili red
+// ?? varianti otvetov chtobi rabotali
+// ??next button
+// ??start buttons
+// ??
+
+
+function selectAnswer(e){
+  const selectedButton = e.target
+  console.log(selectedButton);
+  const correct = selectedButton.dataset
+  //const correct = questionArray[1].correctChoice;
+  console.log(correct);
+  setStatusClass(document.body, correct)
+  Array.from(answerButtonsElement.children).forEach(button =>{
+    setStatusClass(button, button.dataset.correct)
+  })
+  // if (randomQuestionNumber.length > currentQuestionNumber + 1) {
+  //   nextButton.classList.remove('hide')
+  // } else {
+  //   startButton.innerText = "Restart"
+  //   startButton.classList.remove('hide')
+  // }
+}
+
+// restart game
+// function restartGame(){
+//   currentQuestion = 0;
+// nextButton.classList.remove('hide');
+// submitButton.classList.remove('hide');
+//   score = 0;
+//   startGame();
+// }
+
+// //
+// function setStatusClass(element, correct){
+// //clearStatusClass(element)
+//   if (correct){
+//     element.classList.add('correct')
+//   } else{
+//     element.classList.add('wrong')
+//   }
+// }
+// //
+//
+// const pic1 =
+// document.querySelector(".pictures")
+//
+// const pic2 =
+// document.querySelector('#disappear')
+//
+// pic1.addEventListener('click', function(){
+//   pic1.classList.toggle('hidden')
+// })
+
+
 // if you finish player 1 start player 2
 
 // questionField.innerHTML = questionArray[currentQuestionNumber].question;
@@ -397,10 +444,7 @@ const questionArray = [
 // // }
 // gameOver();
 // }
-// function takeTrivia(){
-//   pickQuestion();
-//   checkCorrect();
-// }
+//
 //
 // // if answer is incorrect// gameOver
 // function gameOver(){
@@ -434,11 +478,8 @@ const questionArray = [
 //   console.log('Player 2 ' s: + player[1].points );
 // }
 //
-// // restart game
-// function restartGame(){
-//
-// }
-//
+
+
 //
 // // start game button
 // // function startGame(){
@@ -474,3 +515,16 @@ const questionArray = [
 // function endGame(){
 //   gameStop();
 // }
+
+
+//event listeners
+// modalButton.addEventListener('click', toggleModal);
+startButton.addEventListener('click', startGame);
+// nextButton.addEventListener('click', () => changeSlide("next"));
+// select.addEventListener('click', selectBackground);
+submitButton.addEventListener('click', submit);
+
+// window.onload = () => {
+//   startGame();
+// }
+// submitButton.addEventListener('click', showGameResults);

@@ -24,18 +24,13 @@ body {
   grid-template-rows: 10px 1fr 10px; */
   background: linear-gradient(to right,#f6490f,#f27813,#ef9614);
   background-repeat: no-repeat;
-  height: 50vh;
-  width: 50vw;
+  height: 30vh;
+  width: 30vw;
   align-items: center;
   padding: 50px;
   margin: 0px;
 
 }
-/* .flex-ctr{
-  display: flex;
-  justify-content: center;
-  align-items: center;
-} */
 
 .quiz-container{
   display: flex;
@@ -69,13 +64,6 @@ body {
   align-items: center;
   flex-direction: row;
 }
-
-/* .btn-grid {
-  display: grid;
-  grid-template-columns: repeat(2, auto);
-  gap: 10px;
-  margin: 20px 0;
-} */
 
 .btn{
 font-size: large;
@@ -111,8 +99,8 @@ padding: 15px;
   flex-direction: row-reverse;
   justify-content: center;
   align-items: center;
-  width: 50px;
-  height: 50px;
+  width: 20px;
+  height: 20px;
   margin: 0;
   padding: 0;
 }

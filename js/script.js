@@ -286,12 +286,52 @@ function showQuestion(questions){
         button.addEventListener('click', selectAnswer);
   }
 
+//function to select answers
+  function selectAnswer(e){
+    const selectedButton = e.target
+    console.log(selectedButton);
+    const correct = selectedButton.dataset
+    //const correct = questionArray[1].correctChoice;
+    console.log(correct);
+    setStatusClass(document.body, correct)
+    Array.from(answerButtonsElement.children).forEach(button =>{
+      setStatusClass(button, button.dataset.correct)
+    })
+  }
+
+  // if answer is correct
+  // if(playerAnswer === currentQuestion.currentAnswer){
+  //   numCorrect+++
+  //   }
+  // // // color the answer green
+  // answer[questionNumber].style.color = 'green';
+  //
+  // // // if answer is wrong
+  // else{
+  //   answer[questionNumber].style.color = 'red';
+  // }
+  // }
+  // });
+
+  // function of random questions
+  function generateNextQuestion(){
+  const previousQuestions = [];
+  let randomQuestionNumber = math.floor(Math.random() * question.Array.length);
+  while (previousQuestions.includes(randomQuestionNumber)){
+   let randomQuestionNumber = math.floor(Math.random() * question.Array.length);
+  }
+  let currentQuestionNumber =randomQuestionNumber;
+  previousQuestions.push(currentQuestionNumber)
+  }
+  };
+
+
 // next button
-// function next(){
-//   concole.log(generateNextQuestion())
-//   nextButton.classList.add('hide')
-//   questionContainerElement.classList.remote()
-// }
+function nextButton(){
+  concole.log(generateNextQuestion);
+  nextButton.classList.add('hide')
+  questionContainerElement.classList.remote()
+}
 
 // const BrooklynNets = document.querySelector('#BrooklynNetsImage')
 // const NewYorkKnicks = document.querySelector('#NewYorkKnicksImage')
@@ -308,66 +348,7 @@ function showQuestion(questions){
 //   /// here logic to start game
 // })
 
-// function of random questions
-function generateNextQuestion(){
-const previousQuestions = [];
-let randomQuestionNumber = math.floor(Math.random() * question.Array.length);
-while (previousQuestions.includes(randomQuestionNumber)){
- let randomQuestionNumber = math.floor(Math.random() * question.Array.length);
-}
-let currentQuestionNumber =randomQuestionNumber;
-previousQuestions.push(currentQuestionNumber)
-}
 
-
-
-  //   if (answer.correct){
-  //     button.dataset.correct = answer.correct
-  //   }
-  //   button.addEventListener('click', selectAnswer);
-  //   answerButtonsElement.appendChild(button);
-  // });
-};
-
-// if answer is correct
-// if(playerAnswer === currentQuestion.currentAnswer){
-//   numCorrect+++
-//   }
-// // // color the answer green
-// answer[questionNumber].style.color = 'green';
-//
-// // // if answer is wrong
-// else{
-//   answer[questionNumber].style.color = 'red';
-// }
-// }
-// });
-
-// }
-// ?? if statenet in if answe is correct --- chtobi piemnyalo tsvet na green ili red
-// ?? varianti otvetov chtobi rabotali
-// ??next button
-// ??start buttons
-// ??
-
-
-function selectAnswer(e){
-  const selectedButton = e.target
-  console.log(selectedButton);
-  const correct = selectedButton.dataset
-  //const correct = questionArray[1].correctChoice;
-  console.log(correct);
-  setStatusClass(document.body, correct)
-  Array.from(answerButtonsElement.children).forEach(button =>{
-    setStatusClass(button, button.dataset.correct)
-  })
-  // if (randomQuestionNumber.length > currentQuestionNumber + 1) {
-  //   nextButton.classList.remove('hide')
-  // } else {
-  //   startButton.innerText = "Restart"
-  //   startButton.classList.remove('hide')
-  // }
-}
 
 // restart game
 // function restartGame(){
@@ -378,16 +359,9 @@ function selectAnswer(e){
 //   startGame();
 // }
 
-// //
-// function setStatusClass(element, correct){
-// //clearStatusClass(element)
-//   if (correct){
-//     element.classList.add('correct')
-//   } else{
-//     element.classList.add('wrong')
-//   }
-// }
-// //
+
+
+
 //
 // const pic1 =
 // document.querySelector(".pictures")
@@ -416,11 +390,6 @@ function selectAnswer(e){
 // //
 // for (var i=0; i<questions.length; i++)
 //
-// // find selected answer
-// const answer = answer[questionNumber];
-// const selector = 'input[name=question${questionNumber}]: checked';
-// const playerAnswer = (answer.querySelector(selector) || {}).value;
-//
 //
 // // if one of the players gets 21 points first => win conditions and finish the game
 //
@@ -428,8 +397,6 @@ function selectAnswer(e){
 //
 // //show number of correct answers and total scored
 // showGameResults.innerHTML = '${numCorrect} out of ${Questions.length}';
-//
-//
 //
 // // function correctChoice (){
 // //   if (questionNumber == 1){
@@ -444,16 +411,7 @@ function selectAnswer(e){
 // // }
 // gameOver();
 // }
-//
-//
-// // if answer is incorrect// gameOver
-// function gameOver(){
-//   if (currentScore =< 21) {
-//     console.log('currentScore');
-//     alert('gameOver');
-//   }
-// }
-//
+
 //
 // // clock timer
 // var count = 20;
@@ -481,7 +439,7 @@ function selectAnswer(e){
 
 
 //
-// // start game button
+// // start game button with picture
 // // function startGame(){
 // // onEvent('BrooklynNetsImage', "click", function()){
 // //   setScreen('Welcome');

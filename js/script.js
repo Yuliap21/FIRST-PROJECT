@@ -1,131 +1,105 @@
-// global varialbles
-const questionContainer = document.querySelector('.question');
-
-// question objects. reference to HTML
-const body = document.querySelector('body');
-// const modal = document.querySelector('.modal');
-// const carousel = document.querySelector('.carousel');
-// const carouselImg = document.querySelector('carouselImg');
-const startButton = document.getElementById('start-btn');
-// const nextButton = document.querySelector('.carousel .next-btn');
-// const select = document.querySelector('.carousel .select');
-const restartButton = document.getElementById('restart');
-const questionContainerElement = document.getElementById('question-container');
-const questionElement = document.getElementById('question');
-const answerButtonsElement = document.getElementById('answer-buttons');
-const userScore = document.getElementById('user-score');
-// const showGameResults =document.getElementById('results');
-// const submitButton = document.getElementById('submit');
-
 class Question {
-  constructor(question, correct, a, b, c, d ){
-    this.question = question
+  constructor(question, correct, a, b, c, d) {
+    this.question = question;
     this.choices = {
       a: a,
       b: b,
       c: c,
       d: d
     };
-    this.correctChoice = correct
+    this.correctChoice = correct;
   }
 }
 
-
-const question1 = new Question (
+const question1 = new Question(
   'Before basketballs were invented in 1929, what kind of ball did peole use to play basketball with?',
   'a',
   'Footballs',
   'Tennis balls',
   'Rugby balls',
-  'Snooker balls',
+  'Snooker balls'
 );
 console.log(question1);
 
-
-
-const question2 = new Question (
+const question2 = new Question(
   'This guy scored the most playoff points ever, and is one of the all-time greatest players. What is his name?',
   'b',
   'Jordan Michael',
   'Michael Jordan',
   'Mike Geordie',
-  'Michelle McJordan',
+  'Michelle McJordan'
 );
 console.log(question2);
 
-const question3 = new Question (
+const question3 = new Question(
   'How many people are on a basketball team at once?',
   'a',
   '5',
   '7',
   '8',
-  '12',
+  '12'
 );
 console.log(question3);
 
-const question4 = new Question (
+const question4 = new Question(
   'Which of these is a slang for playing basketball?',
   'a',
   'Shoot some hoops',
   'Blast some rings',
   'Chuck some balls',
-  'Sink some oranges',
+  'Sink some oranges'
 );
 console.log(question4);
 
-const question5 = new Question (
+const question5 = new Question(
   'What is the name of Chicagos NBA team?',
   'd',
   'Demons',
   'Stags',
   'Bison',
-  'Bulls',
+  'Bulls'
 );
 console.log(question5);
 
-
-const question6 = new Question (
+const question6 = new Question(
   'What team won the very first NBA game?',
   'd',
   'Philadelphia warrior',
   'Toronto Huskies',
   'Chicago Stags',
-  'New York Knicks',
+  'New York Knicks'
 );
 console.log(question6);
 
-
-const question7 = new Question (
+const question7 = new Question(
   'Who was the youngest player to score 10,000 points in the NBA?',
   'a',
   'Lebron James',
   'Kobe Bryant',
   'Wilt Chamberlain',
-  'Michael Jordan',
+  'Michael Jordan'
 );
 console.log(question7);
 
+const question8 = new Question(
+  'Which NBA player was nicknamed after a rifle?',
+  'a',
+  'Andrei Kirilenko',
+  'Dirk Nowitzki',
+  'Dikembe Mutombo',
+  'Giannis Antetokounmpo'
+);
+console.log(question8);
 
- const question8 = new Question(
-   'Which NBA player was nicknamed after a rifle?',
-   'a',
-   'Andrei Kirilenko',
-   'Dirk Nowitzki',
-   'Dikembe Mutombo',
-   'Giannis Antetokounmpo',
- );
- console.log(question8);
-
-
- const question9 = new Question (
-   'Who was the oldest player to score 50+ points in a game?',
-   'b',
-   'Michael Jordan',
-   'Jamal Crawford',
-   'Grant Hill',
-   'Steve Nash',
- );
- console.log(question9);
+const question9 = new Question(
+  'Who was the oldest player to score 50+ points in a game?',
+  'b',
+  'Michael Jordan',
+  'Jamal Crawford',
+  'Grant Hill',
+  'Steve Nash'
+);
+console.log(question9);
 
 const question10 = new Question(
   'Who was the first player in NBA history to make 400 three-pointers in a season?',
@@ -133,10 +107,9 @@ const question10 = new Question(
   'Dennis Scott',
   'Stephen Curry',
   'Ray Allen',
-  'James Harden',
+  'James Harden'
 );
 console.log(question10);
-
 
 const question11 = new Question(
   'Who is the famouse Russian NBA player?',
@@ -144,7 +117,7 @@ const question11 = new Question(
   'Andrey Arshavin',
   'Andrey Kirilenko',
   'Roman Abramovich',
-  'Aleksandr Ovechkin',
+  'Aleksandr Ovechkin'
 );
 console.log(question11);
 
@@ -154,7 +127,7 @@ const question12 = new Question(
   'Lebron James',
   'Stephen Curry',
   'Michael Jordan',
-  'Kareem Abdul-Jabbar',
+  'Kareem Abdul-Jabbar'
 );
 console.log(question12);
 
@@ -164,10 +137,9 @@ const question13 = new Question(
   'Golden State Warriors',
   'Brooklyn Nets',
   'Miami Heat',
-  'New York Knicks',
+  'New York Knicks'
 );
 console.log(question13);
-
 
 const question14 = new Question(
   'How many NBA championships did the Lakers win during the 1960s?',
@@ -175,10 +147,9 @@ const question14 = new Question(
   '0',
   '2',
   '4',
-  '6',
+  '6'
 );
 console.log(question14);
-
 
 const question15 = new Question(
   'What unfortunate NBA record do the Brooklyn Nets hold?',
@@ -186,10 +157,9 @@ const question15 = new Question(
   'fewest rebounds in a game',
   'fewest steals in a game',
   'fewest field goals in a game',
-  'fewest assists in a game',
+  'fewest assists in a game'
 );
 console.log(question15);
-
 
 const question16 = new Question(
   'Which player was nicknamed Black Mamba?',
@@ -197,7 +167,7 @@ const question16 = new Question(
   'Ron Artest',
   'Kobe Bryant',
   'Allen Iverson',
-  'Shawn Marion',
+  'Shawn Marion'
 );
 console.log(question16);
 
@@ -217,162 +187,194 @@ const questionArray = [
   question13,
   question14,
   question15,
-  question16,
+  question16
 ];
 
+// global varialbles
+const questionContainer = document.querySelector('.question');
 
+// question objects. reference to HTML
+const startButton = document.getElementById('start-btn');
+const nextButton = document.getElementById('next-btn');
+const questionContainerElement = document.getElementById('question-container');
+// const randomQuestionNumber = currentQuestion
+const questionElement = document.getElementById('question');
+const answerButtonsElement = document.getElementById('answer-buttons');
+const scoreKeeper = document.getElementById('score');
 
-// const backgroundImage = [
-//   "https://upload.wikimedia.org/wikipedia/commons/thumb/4/44/Brooklyn_Nets_newlogo.svg/774px-Brooklyn_Nets_newlogo.svg.png",
-//
-//   "https://www.kindpng.com/picc/m/409-4095405_transparent-new-york-knicks-png-new-york-knicks.png"
-//
-// ]
-//
-// let currentSlide = 0;
+// const showGameResults =document.getElementById('results');
+// const submitButton = document.getElementById('submit');
+// submitButton.addEventListener('click', showGameResults);
+const previousQuestions = [];
+let globalRandom = 0;
+let currentQuestionNumber = 0;
+let score = 0;
+//event listeners
+startButton.addEventListener('click', startGame);
+nextButton.addEventListener('click', nextQuestion);
 
 // functions start,select
-// const toggleModal = () => modal.classList.toggle('open');
-//
-// const changeSlide = (direction) => {
-//   if (direction === 'next'){
-//     if (currentSlide < backgroundImage.length - 1) {
-//       currentSlide++
-//     } else {
-//       alert('going back to the first slide')
-//       currentSlide = 0;
-//     }
-//   }
-//   else if (direction === 'previous'){
-//     if (currentSlide > 0){
-//       currentSlide--
-//     } else {
-//       alert('going back to the last slide')
-//       currentSlide = backgroundImage.length - 1;
-//     }
-//   }
-//   carouselImg.setAttribute('src', backgroundImage[currentSlide]);
-// }
-//
-// const openCarousel = () => {
-//   carousel.classList.add('open');
-//   carouselImg.setAttribute("src", backgroundImage[currentSlide]);
-//   toggleModal();
-// }
-//
-// const selectBackground = () => {
-//   carousel.classList.remove('open');
-//   body.style.backgroundImage = `url(${backgroundImage[currentSlide]})`;
-//   startGame();
-// }
+function startGame() {
+  console.log('started');
+  startButton.classList.add('hide');
+  //questionContainerElement.classList.remove('hide'); // remove hide?
+  showQuestion(questionArray);
+  //generateNextQuestion();
+}
+//questionContainerElement.classList.remove('hide');
+//questionContainerElement.classList.add('hide');
 
-function startGame(){
-  console.log('started')
-  startButton.classList.add('hide')
-  questionContainerElement.classList.remove('hide')
-  // generateNextQuestion()
-showQuestion(questionArray);
+function nextQuestion() {
+  //questionContainerElement.classList.add('hide');
+  generateNextQuestion(questionArray, previousQuestions, globalRandom);
 }
 
 // function to show Questions
-function showQuestion(questions){
-  let first = Math.floor(Math.random() * questions.length);// random #
-  questionElement.innerText =questions[first].question;
-  for(const [key, value] of Object.entries(questions[first].choices)){
+function showQuestion(questions) {
+  console.log('hello');
+  let random = Math.floor(Math.random() * questions.length); // random # from 0 to 15
+  questionElement.innerText = questions[random].question; // here  we generate first random question
+  for (const [key, value] of Object.entries(questions[random].choices)) {
     const button = document.createElement('button');
-        document.body.appendChild(button)
-        button.innerText = value;
-        button.setAttribute("data-correctChoice", questions[first].correctChoice)
-        button.addEventListener('click', selectAnswer);
+    questionContainerElement.appendChild(button);
+    button.innerText = value;
+    button.setAttribute('data-correctChoice', questions[random].correctChoice);
+    button.setAttribute('data-choiceOption', key);
+    button.addEventListener('click', selectAnswer);
   }
+  //  keepeng track of current numbers to fill the array of used numbers
+  currentQuestionNumber = random;
+  // filling the array of used numbers
+  globalRandom = random;
+  previousQuestions.push(currentQuestionNumber);
+  scoreKeeper.innerText = 'Score: ' + score;
 
-//function to select answers
-  function selectAnswer(e){
-    const selectedButton = e.target
-    console.log(selectedButton);
-    const correct = selectedButton.dataset
-    //const correct = questionArray[1].correctChoice;
-    console.log(correct);
-    setStatusClass(document.body, correct)
-    Array.from(answerButtonsElement.children).forEach(button =>{
-      setStatusClass(button, button.dataset.correct)
-    })
-  }
-
-  // if answer is correct
-  // if(playerAnswer === currentQuestion.currentAnswer){
-  //   numCorrect+++
-  //   }
-  // // // color the answer green
-  // answer[questionNumber].style.color = 'green';
+  // if (previousQuestions.length < questionArray.length) {
+  // console.log('gogogo');
+  // nextButton.addEventListener(
+  //   'click',
+  //   generateNextQuestion(questions, previousQuestions, random)
+  //   // true
+  // );
+  // }
   //
-  // // // if answer is wrong
-  // else{
-  //   answer[questionNumber].style.color = 'red';
-  // }
-  // }
-  // });
-
-  // function of random questions
-  function generateNextQuestion(){
-  const previousQuestions = [];
-  let randomQuestionNumber = math.floor(Math.random() * question.Array.length);
-  while (previousQuestions.includes(randomQuestionNumber)){
-   let randomQuestionNumber = math.floor(Math.random() * question.Array.length);
-  }
-  let currentQuestionNumber =randomQuestionNumber;
-  previousQuestions.push(currentQuestionNumber)
-  }
-  };
-
-
-// next button
-function nextButton(){
-  concole.log(generateNextQuestion);
-  nextButton.classList.add('hide')
-  questionContainerElement.classList.remote()
+  // calling the next button
+  //console.log(currentQuestionNumber);
+  //
 }
 
-// const BrooklynNets = document.querySelector('#BrooklynNetsImage')
-// const NewYorkKnicks = document.querySelector('#NewYorkKnicksImage')
-// BrooklynNets.addEventListener('click', function(){
-//   BrooklynNets.classList.add('hidden')
-//   console.log('clicked BrooklynNetsImage, start game' )
+// function of random questions
+function generateNextQuestion(questions, previousQuestions, random) {
+  if (previousQuestions.length >= 1) {
+    resetState();
+    console.log('the question number after click start', currentQuestionNumber);
+    // looping untill we get a distinct number
+    while (previousQuestions.includes(random)) {
+      random = Math.floor(Math.random() * questions.length);
+    }
+    console.log('the random number now is: ', currentQuestionNumber);
+    questionElement.innerText = questions[random].question; // here we generate random question after first
+    for (const [key, value] of Object.entries(questions[random].choices)) {
+      const button = document.createElement('button');
+      questionContainerElement.appendChild(button);
+      button.innerText = value;
+      button.setAttribute(
+        'data-correctChoice',
+        questions[random].correctChoice
+      ); // new
+      button.setAttribute('data-choiceOption', key);
+      button.addEventListener('click', selectAnswer);
+
+      //if (button.innerText == value) button.classList.add('hide');
+    }
+    //globalRandom = random;
+    currentQuestionNumber = random;
+    console.log('current question number now is : ', currentQuestionNumber);
+    previousQuestions.push(currentQuestionNumber);
+    console.log('prevQarr size now is  : ', previousQuestions.length);
+  }
+
+  // if (previousQuestions.length < questions.length) {
+  // console.log('ques:' + questions.length);
+  // console.log('prev:' + previousQuestions.length);
+  // previousQuestions.push(random);
+
+  // nextButton.removeEventListener(
+  //   'click',
+  //   generateNextQuestion
+  //   // true
+  // );
+  // }
+  //resetState();
+}
+
+function resetState() {
+  //clearStatusClass(document.body)
+  //nextButton.classList.add('hide');
+  while (questionContainerElement.firstChild) {
+    questionContainerElement.removeChild(
+      questionContainerElement.childNodes[0]
+    );
+  }
+}
+
+function selectAnswer(e) {
+  const selectedButton = e.target;
+  const selectedChoice = selectedButton.getAttribute('data-choiceOption');
+  const correct = selectedButton.getAttribute('data-correctChoice');
+  console.log('the chocie you selected is: ', selectedChoice); // log the selected letter
+  console.log('the correct choice is : ', correct); // log the correct letter
+
+  // this function should change the color of the page if depending on whether the answer is correct
+  setStatusClass(selectedButton, correct, selectedChoice);
+  // Array.from(answerButtonsElement.children).forEach(button => {
+  //   setStatusClass(button, button.dataset.correct);
+  // });
+  // if (randomQuestionNumber.length > currentQuestionNumber + 1) {
+  //   nextButton.classList.remove('hide')
+  // } else {
+  //   startButton.innerText = "Restart"
+  //   startButton.classList.remove('hide')
+  // }
+}
+
+function setStatusClass(element, corr, sel) {
+  //clearStatusClass(element);
+  // if (corr === sel) {
+  //   element.classList.add('correct');
+  //   element.classList.remove('wrong');
+  // } else {
+  //   element.classList.remove('correct');
+  //   element.classList.add('wrong');
+  // }
+  if (corr === sel) {
+    element.style.backgroundColor = 'green';
+
+    //element.classList.remove('wrong');
+  } else {
+    element.style.backgroundColor = 'red';
+    //element.classList.remove('correct');
+  }
+}
+
+
+
+// const player1 = document.querySelector('#player1');
+// const player2 = document.querySelector('#player2');
+// player1.addEventListener('click', function(){
+//   player1.classList.add('hidden')
+//   console.log('clicked player1, start game' )
 //   startGame();
 // })
-//
-// BrooklynNets.addEventListener('click', function(){
-//   BrooklynNets.classList.add('hidden')
-//   console.log('clicked NewYorkKnicksImage, start game')
+
+// player2.addEventListener('click', function(){
+//   player2.classList.add('hidden')
+//   console.log('clicked player2, start game')
 //   startGame();
 //   /// here logic to start game
 // })
 
-
-
-// restart game
-// function restartGame(){
-//   currentQuestion = 0;
-// nextButton.classList.remove('hide');
-// submitButton.classList.remove('hide');
-//   score = 0;
-//   startGame();
-// }
-
-
-
-
-//
-// const pic1 =
-// document.querySelector(".pictures")
-//
-// const pic2 =
-// document.querySelector('#disappear')
-//
-// pic1.addEventListener('click', function(){
-//   pic1.classList.toggle('hidden')
-// })
-
+//if random question number has been used before the same then rerun random question again
 
 // if you finish player 1 start player 2
 
@@ -382,7 +384,6 @@ function nextButton(){
 //
 //  }
 
-
 //keep track of players answers
 // let playerAnswer = '';
 // let numCorrect = 0;
@@ -390,13 +391,19 @@ function nextButton(){
 // //
 // for (var i=0; i<questions.length; i++)
 //
+// // find selected answer
+// const answer = answer[questionNumber];
+// const selector = 'input[name=question${questionNumber}]: checked';
+// const playerAnswer = (answer.querySelector(selector) || {}).value;
+//
 //
 // // if one of the players gets 21 points first => win conditions and finish the game
 //
 //
-//
 // //show number of correct answers and total scored
 // showGameResults.innerHTML = '${numCorrect} out of ${Questions.length}';
+//
+//
 //
 // // function correctChoice (){
 // //   if (questionNumber == 1){
@@ -436,10 +443,13 @@ function nextButton(){
 //   console.log('Player 2 ' s: + player[1].points );
 // }
 //
-
-
+// // restart game
+// function restartGame(){
 //
-// // start game button with picture
+// }
+//
+//
+// // start game button
 // // function startGame(){
 // // onEvent('BrooklynNetsImage', "click", function()){
 // //   setScreen('Welcome');
@@ -449,7 +459,7 @@ function nextButton(){
 // //   startTimer();
 // //
 // // }
-// // onEvent('AtlantaHawksImage', "click", function()){
+// // onEvent('', "click", function()){
 // //   setScreen('Welcome');
 // //   music.play();
 // //   music.volume = 0.1;
@@ -474,15 +484,4 @@ function nextButton(){
 //   gameStop();
 // }
 
-
-//event listeners
-// modalButton.addEventListener('click', toggleModal);
-startButton.addEventListener('click', startGame);
-// nextButton.addEventListener('click', () => changeSlide("next"));
-// select.addEventListener('click', selectBackground);
-submitButton.addEventListener('click', submit);
-
-// window.onload = () => {
-//   startGame();
-// }
-// submitButton.addEventListener('click', showGameResults);
+//

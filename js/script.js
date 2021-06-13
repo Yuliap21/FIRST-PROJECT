@@ -191,32 +191,53 @@ const questionArray = [
 ];
 
 // global varialbles
-const questionContainer = document.querySelector('.question');
+const quizContainer = document.querySelector('.quiz-container');
 
 // question objects. reference to HTML
-const startButton = document.getElementById('start-btn');
+//const startButton = document.getElementById('start-btn');
 const nextButton = document.getElementById('next-btn');
 const questionContainerElement = document.getElementById('question-container');
 // const randomQuestionNumber = currentQuestion
 const questionElement = document.getElementById('question');
 const answerButtonsElement = document.getElementById('answer-buttons');
 const scoreKeeper = document.getElementById('score');
+const brooklynNets = document.querySelector('#brooklynNets');
+const newYorkKnicks = document.querySelector('#newYorkKnicks');
 
 // const showGameResults =document.getElementById('results');
 // const submitButton = document.getElementById('submit');
 // submitButton.addEventListener('click', showGameResults);
-const previousQuestions = [];
+const previousQuestions = [1,2,3,4,5,6,7,8,9,10,11,12,13,14,15];
 let globalRandom = 0;
 let currentQuestionNumber = 0;
-let score = 0;
+let score = 18;
+let breaker = false;
+
+// clock timer
+// const count = 20;
+// const interval = setInterval(myTimer, 1000);
 //event listeners
-startButton.addEventListener('click', startGame);
+//startButton.addEventListener('click', startGame);
 nextButton.addEventListener('click', nextQuestion);
+brooklynNets.addEventListener('click', function(){
+  brooklynNets.classList.add('hide')
+  newYorkKnicks.classList.add('hide')
+  console.log('clicked brooklynNets, start game' )
+  startGame();
+})
+
+newYorkKnicks.addEventListener('click', function(){
+  newYorkKnicks.classList.add('hide')
+  brooklynNets.classList.add('hide')
+  console.log('clicked newYorkKnicks, start game')
+  startGame();
+  /// here logic to start game
+})
 
 // functions start,select
 function startGame() {
   console.log('started');
-  startButton.classList.add('hide');
+  //startButton.classList.add('hide');
   //questionContainerElement.classList.remove('hide'); // remove hide?
   showQuestion(questionArray);
   //generateNextQuestion();
@@ -224,14 +245,8 @@ function startGame() {
 //questionContainerElement.classList.remove('hide');
 //questionContainerElement.classList.add('hide');
 
-function nextQuestion() {
-  //questionContainerElement.classList.add('hide');
-  generateNextQuestion(questionArray, previousQuestions, globalRandom);
-}
-
 // function to show Questions
 function showQuestion(questions) {
-  console.log('hello');
   let random = Math.floor(Math.random() * questions.length); // random # from 0 to 15
   questionElement.innerText = questions[random].question; // here  we generate first random question
   for (const [key, value] of Object.entries(questions[random].choices)) {
@@ -263,6 +278,30 @@ function showQuestion(questions) {
   //
 }
 
+function nextQuestion() {
+
+  //questionContainerElement.classList.add('hide');
+  breaker = false;
+  generateNextQuestion(questionArray, previousQuestions, globalRandom);
+}
+
+function endGame(score){
+  if(score === 21 ){
+    nextButton.classList.add('hide');
+    quizContainer.classList.add('hide'); // removing the button next
+    const win = document.getElementById('winImage');// showing image
+    win.src = "https://media.giphy.com/media/xT4uQfHn1CUGyYsiiY/source.gif";
+    console.log('YOU WON!!!');
+  }
+  else if(previousQuestions.length === 16){
+    nextButton.classList.add('hide');
+    quizContainer.classList.add('hide'); // removing the button next
+    const lost = document.getElementById('lostImage');// showing image
+    lost.src = "https://media.giphy.com/media/SZo24vtpoBTWw/source.gif"
+    console.log('YOU LOST!!!');
+  }
+}
+
 // function of random questions
 function generateNextQuestion(questions, previousQuestions, random) {
   if (previousQuestions.length >= 1) {
@@ -284,29 +323,17 @@ function generateNextQuestion(questions, previousQuestions, random) {
       ); // new
       button.setAttribute('data-choiceOption', key);
       button.addEventListener('click', selectAnswer);
-
-      //if (button.innerText == value) button.classList.add('hide');
     }
-    //globalRandom = random;
     currentQuestionNumber = random;
-    console.log('current question number now is : ', currentQuestionNumber);
+    console.log('test: current question number now is : ', currentQuestionNumber);
     previousQuestions.push(currentQuestionNumber);
-    console.log('prevQarr size now is  : ', previousQuestions.length);
+    console.log('test: prevQarr size now is  : ', previousQuestions.length);
+    //if (button.innerText == value) button.classList.add('hide');
   }
-
-  // if (previousQuestions.length < questions.length) {
-  // console.log('ques:' + questions.length);
-  // console.log('prev:' + previousQuestions.length);
-  // previousQuestions.push(random);
-
-  // nextButton.removeEventListener(
-  //   'click',
-  //   generateNextQuestion
-  //   // true
-  // );
-  // }
-  //resetState();
+  //globalRandom = random;
+console.log("please press start");
 }
+
 
 function resetState() {
   //clearStatusClass(document.body)
@@ -319,14 +346,18 @@ function resetState() {
 }
 
 function selectAnswer(e) {
+  console.log(' im in select answer');
   const selectedButton = e.target;
   const selectedChoice = selectedButton.getAttribute('data-choiceOption');
   const correct = selectedButton.getAttribute('data-correctChoice');
   console.log('the chocie you selected is: ', selectedChoice); // log the selected letter
   console.log('the correct choice is : ', correct); // log the correct letter
-
   // this function should change the color of the page if depending on whether the answer is correct
-  setStatusClass(selectedButton, correct, selectedChoice);
+  if (breaker === false) {
+    setStatusClass(selectedButton, correct, selectedChoice);
+  }
+  breaker = true;
+  endGame(score);
   // Array.from(answerButtonsElement.children).forEach(button => {
   //   setStatusClass(button, button.dataset.correct);
   // });
@@ -339,50 +370,29 @@ function selectAnswer(e) {
 }
 
 function setStatusClass(element, corr, sel) {
-  //clearStatusClass(element);
-  // if (corr === sel) {
-  //   element.classList.add('correct');
-  //   element.classList.remove('wrong');
-  // } else {
-  //   element.classList.remove('correct');
-  //   element.classList.add('wrong');
-  // }
   if (corr === sel) {
     element.style.backgroundColor = 'green';
-
+    score = score + 3;
+    scoreKeeper.innerText = 'Score: ' + score;
+    console.log(score);
     //element.classList.remove('wrong');
   } else {
     element.style.backgroundColor = 'red';
     //element.classList.remove('correct');
   }
+
+
+  function myTimer(){
+    document.getElementById('count').innerHTML= sec + 'sec left';
+    count--;
+    if (count === -1){
+      stopInterval(interval);
+    alert('You are out of time!');
+  }
 }
 
+}
 
-
-// const player1 = document.querySelector('#player1');
-// const player2 = document.querySelector('#player2');
-// player1.addEventListener('click', function(){
-//   player1.classList.add('hidden')
-//   console.log('clicked player1, start game' )
-//   startGame();
-// })
-
-// player2.addEventListener('click', function(){
-//   player2.classList.add('hidden')
-//   console.log('clicked player2, start game')
-//   startGame();
-//   /// here logic to start game
-// })
-
-//if random question number has been used before the same then rerun random question again
-
-// if you finish player 1 start player 2
-
-// questionField.innerHTML = questionArray[currentQuestionNumber].question;
-// questionTracker.push(questionArray[currentQuestionNumber]);
-// questionArray.splice(currentQuestionNumber, 1);
-//
-//  }
 
 //keep track of players answers
 // let playerAnswer = '';
@@ -391,39 +401,22 @@ function setStatusClass(element, corr, sel) {
 // //
 // for (var i=0; i<questions.length; i++)
 //
-// // find selected answer
-// const answer = answer[questionNumber];
-// const selector = 'input[name=question${questionNumber}]: checked';
-// const playerAnswer = (answer.querySelector(selector) || {}).value;
-//
-//
-// // if one of the players gets 21 points first => win conditions and finish the game
-//
-//
-// //show number of correct answers and total scored
-// showGameResults.innerHTML = '${numCorrect} out of ${Questions.length}';
-//
-//
-//
-// // function correctChoice (){
-// //   if (questionNumber == 1){
-// //     current = current +1;
-// //     console.log ('current =' +current);
-// //     question1();
-// //   }
-// // if (questionNumber == 2){
-// //   current = current +1;
-// //   console.log ('current =' +current);
-// //   question2();
-// // }
-// gameOver();
-// }
+
 
 //
-// // clock timer
+// // if answer is incorrect// gameOver
+// function gameOver(){
+//   if (currentScore =< 21) {
+//     console.log('currentScore');
+//     alert('gameOver');
+//   }
+// }
+//
+//
+// clock timer
 // var count = 20;
 // var interval = setInterval(myTimer, 1000);
-//
+
 //   function myTimer(){
 //     document.getElementById('count').innerHTML= sec + 'sec left';
 //     count--;
@@ -433,40 +426,14 @@ function setStatusClass(element, corr, sel) {
 //   }
 // }
 //
-//
-// // show score button for player2
-//
-// //results button
-// let showGameResults(player[] players){
-//   console.log('Game over!');
-//   console.log('Player 1 's: + player[0].points');
-//   console.log('Player 2 ' s: + player[1].points );
-// }
-//
+
 // // restart game
 // function restartGame(){
 //
 // }
 //
 //
-// // start game button
-// // function startGame(){
-// // onEvent('BrooklynNetsImage', "click", function()){
-// //   setScreen('Welcome');
-// //   music.play();
-// //   music.volume = 0.1;
-// //   resetTimer();
-// //   startTimer();
-// //
-// // }
-// // onEvent('', "click", function()){
-// //   setScreen('Welcome');
-// //   music.play();
-// //   music.volume = 0.1;
-// //   resetTimer();
-// //   startTimer();
-// // }
-// // }
+
 // //play background music
 // function playMusic(LineEvent event){
 //   LineEvent.Type type = event.getType();
@@ -478,10 +445,8 @@ function setStatusClass(element, corr, sel) {
 //   }
 // }
 //
-// // finish game button
+
 //
 // function endGame(){
 //   gameStop();
 // }
-
-//
